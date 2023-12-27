@@ -11,6 +11,8 @@ Generating a Pulumi JSON schema is the entrypoint to being able to generate Pulu
 - Ensure `operationId` is not empty for all endpoint paths/operations
 - Well-designed REST API
 - Use `OneOf` schema with a discriminator instead of `AnyOf`
+- Define enums as reusable schema refs instead of inline enums
+- Mark read-only properties as such using the `readOnly` attribute
 
 ## Anatomy Of A Pulumi Provider
 
