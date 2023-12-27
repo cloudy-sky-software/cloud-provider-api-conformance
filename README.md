@@ -6,6 +6,12 @@ Following the guidelines outlined in this repository ensures that [`pulschema`](
 
 Generating a Pulumi JSON schema is the entrypoint to being able to generate Pulumi provider SDKs using [crosscode](https://www.pulumi.com/crosscode/).
 
+## Conformance
+
+- Ensure `operationId` is not empty for all endpoint paths/operations
+- Well-designed REST API
+- Use `OneOf` schema with a discriminator instead of `AnyOf`
+
 ## Anatomy Of A Pulumi Provider
 
 A Pulumi provider package consists of SDKs for each of the programming languages supported by Pulumi.
@@ -19,7 +25,7 @@ can represent a cloud service like a managed database service or a virtual machi
 is an identity provider platform, then a resource could be a user group or a user. These are generally
 known as resources.
 
-### Lifecycle of a resource
+### Resource lifecycle
 
 A resource's lifecycle begins when it is created, either through Pulumi or manually by the user
 using your service's UI (console, dashboard etc.) When created via Pulumi, the resource needs
@@ -31,7 +37,7 @@ the resource in question or if it needs to create a replacement because the conf
 the existing one has changed in a way that your service would not support in-place updates
 to it.
 
-### Mapping CRUD to HTTP methods
+### Mapping HTTP methods to CRUD
 
 So given the understanding of the lifecycle of a resource, you might have already guessed
 how each action maps to the HTTP methods of a RESTful API.
@@ -49,12 +55,6 @@ state. For example, consider a list environment variables. If your service suppo
 setting environment variables for some service, you may simply allow users to
 replace the entire set of environment variables as opposed to supporting
 updating a single env or deleting a single env var.
-
-## Conformance
-
-- `operationId`
-- Proper use of HTTP verbs
-- Proper use of REST API principles
 
 ## Deciding Between GraphQL vs. REST API
 
