@@ -1,5 +1,7 @@
 # Pulumi Resource Provider API Conformance
 
+> ⚠️ This document is actively evolving.
+
 This repository contains a conformance test and guidelines (COMING SOON!) that describe how resource providers can ensure a highly-compliant OpenAPI document in order to generate native [Pulumi providers](./pulumi.md). Native Pulumi providers are Pulumi SDKs that rely on the provider's API and communicate with them using HTTP requests.
 
 Following the guidelines outlined in this repository ensures that [`pulschema`](https://github.com/cloudy-sky-software/pulschema) is able to consistently and predictably transform the resource provider's OpenAPI document to a Pulumi JSON schema document with little to no modifications required, except when conformance tests fail and changes at the source of the OpenAPI doc are not possible for any reason.
