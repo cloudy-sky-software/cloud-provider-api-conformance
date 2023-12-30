@@ -14,6 +14,24 @@ Generating a Pulumi JSON schema is the entrypoint to being able to generate Pulu
 - Use `OneOf` schema with a discriminator instead of `AnyOf`
 - Define enums as reusable schema refs instead of inline enums
 - Mark read-only properties using the `readOnly` attribute
+- Ensure the `id` path param in a URI is used for the resource being operated on
+<details>
+<summary>Path params explainer</summary>
+
+If a resource is a child resource linked by the ID of a parent resource, then ensure that the
+path param that represents the parent resource's ID is not called just `id`. The `id` path param
+should always only be used by the primary resource that the endpoint serves.
+
+For example, in the endpoint `/servers/{server_id}/volumes/{id}`, `servers` is the parent resource
+for `volumes`. The `{server_id}` path param is automatically added as a required input when generating
+the resource schema for a `volume` resource. And this endpoint in particular is to "get" a single volume
+belonging to a server. Therefore, the volume is the primary resource in this case and the server is the
+parent resource.
+
+In Pulumi, every resource automatically gets an `id` attribute which is the unique provider-assigned
+id.
+
+</details>
 
 ## Deciding Between GraphQL vs. REST API
 
