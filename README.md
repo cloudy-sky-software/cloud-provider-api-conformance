@@ -31,7 +31,7 @@ be interested in describing your API spec using Microsoft's [TypeSpec](https://m
 which allows you to emit OpenAPI and GraphQL schema
 docs from a single source.
 
-The philosophical decision of whether or not you should choose GraphQL for any
+The decision of whether or not you should choose GraphQL for any
 number of reasons is out-of-scope for this document.
 You'll have to do the due dilligence to see if it's the right fit for your
 product. That said, GraphQL can be great for fields of applications that
